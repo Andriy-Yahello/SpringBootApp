@@ -41,3 +41,6 @@ public class StudentService{
         this.StudentDao.insertStudentToDb(student);
     }
 }
+
+//Maven projects -> install ->target -> springBootApp copy to desktop ->
+// cmd.exe -> rename to app.jar -> java -jar app.jar -> localhost:8080/students
