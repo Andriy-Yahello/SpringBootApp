@@ -1,6 +1,7 @@
 package com.lofongi.Service;
 
 import com.lofongi.DAO.FakeStudentDAOImpl;
+import com.lofongi.DAO.StudentDAO;
 import com.lofongi.Entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,27 +15,29 @@ import java.util.Collection;
 @Service
 public class StudentService{
         @Autowired
+        //to avoid conflicts with StudentDAO in fakestud and mongo
         @Qualifier("fakeData")
-        private FakeStudentDAOImpl fakeStudentDaoImpl;
+        //Or @Qualifier("mongoData")
+        private StudentDAO StudentDao;
 
         public Collection<Student> getAllStudents(){
-            return this.fakeStudentDaoImpl.getAllStudents();
+            return this.StudentDao.getAllStudents();
         }
 
     public Student getStudentById(Integer id){
-        return fakeStudentDaoImpl.getStudentById(id);
+        return StudentDao.getStudentById(id);
     }
 
     public void removeStudentById(Integer id) {
-        this.fakeStudentDaoImpl.removeStudentById(id);
+        this.StudentDao.removeStudentById(id);
     }
 
     public void updateStudent(Student student){
-        this.fakeStudentDaoImpl.updateStudent(student);
+        this.StudentDao.updateStudent(student);
     }
 
     public void insertStudent(Student student) {
         //alt + enter
-        this.fakeStudentDaoImpl.insertStudentToDb(student);
+        this.StudentDao.insertStudentToDb(student);
     }
 }
