@@ -43,4 +43,11 @@ public class StudentController {
         studentsrvice.updateStudent(student);
     }
 
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+
+    public void insertStudentById(@RequestBody Student student){
+        //alt + enter creates a method
+        studentsrvice.insertStudent(student);
+    }
+
 }
